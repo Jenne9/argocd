@@ -1,5 +1,6 @@
 imageName: nginx
 replicaCount: 1
+namespace: jenne
 
 service:
   type: LoadBalancer
