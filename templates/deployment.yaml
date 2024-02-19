@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app: {{ .Release.Name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      volumes:
+        - name: {{ .Values.volumes.name}}
+          persistentVolumeClaim:
+            claimName: {{ .Values.volumes.claimName}}
+      initContainers:
+        - name: {{ .Values.initContainers.name }}
+          image: {{ .Values.initContainers.image }}
+      containers:
+        - name: {{ .Values.imageName}}
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          
+      
+

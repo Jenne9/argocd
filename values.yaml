@@ -1,0 +1,16 @@
+imageName: nginx
+replicaCount: 1
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 80
+  protocol: TCP
+
+volumes:
+  name: my-pvc
+  claimName: my-pvc
+
+initContainers:
+  name: init-container
+  image: busybox
