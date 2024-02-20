@@ -15,5 +15,5 @@ spec:
             command:
             - "/bin/sh"
             - "-c"
-            - "echo \"$(date) Nous sommes le $(date)\""
+            - "date"
           restartPolicy: OnFailure
