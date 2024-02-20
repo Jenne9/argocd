@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: {{ .Release.Name }}-cronjob
 spec:
-  schedule: "0 * * * *"
+  schedule: "10 10 * * *"
   jobTemplate:
     spec:
       template:
@@ -15,5 +15,5 @@ spec:
             command:
             - "/bin/sh"
             - "-c"
-            - "date; Nous sommes le $(date)"
+            - "echo \"$(date) Nous sommes le $(date)\""
           restartPolicy: OnFailure
